@@ -11,15 +11,17 @@ class SessionsController < ApplicationController
 
     if @user && @user.password == passhash
       session[:user_id] = @user.id
+      redirect_to :root
     else
-      @error = "No user found!"
+      flash[:notice] = "Sorry, no such user found!"
+      redirect_to login_path 
     end
 
-    redirect_to :root
   end
 
 	def destroy
     session.delete(:user_id)
+    flash[:notice] = "Successfully logged out."
     @user = nil
     redirect_to :root
 	end

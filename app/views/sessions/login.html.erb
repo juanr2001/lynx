@@ -1,14 +1,10 @@
 <h2> Login </h2>
 
-<% if @message %>
-
-<% redirect_to index, :flash => { :error => @message } %>
-
-<% else %>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<%end%>
 
 <%= render partial: "users/form" %>
-
-<% end %>
 
 
 
