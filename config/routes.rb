@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 root to: 'links#index'
 
 #User
-get 'users/new', to: 'users#create'  # show me the new user signup form
-post 'users', to: 'users#new' # the form action for signup
+get 'users/new', to: 'users#new'  # show me the new user signup form
+post 'users', to: 'users#create' # the form action for signup
 
 #Session
 get 'login', to: 'sessions#login' # show the login page
