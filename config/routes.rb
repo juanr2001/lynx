@@ -13,9 +13,9 @@ post 'login', to: 'sessions#create' #set the user id in the session if password 
 delete 'login', to: 'sessions#destroy' # remove user id
 
 #Links
-get 'links/new', to: 'links#create' # show the form for a new link
-post 'links', to: 'links#new' # the form action for new link (if logged in)
-get 'links/:id', to: 'links#show' # clicking a link takes it to destination
+get 'links/new', to: 'links#new' # show the form for a new link
+post 'links', to: 'links#create' # the form action for new link (if logged in)
+get 'links/:id', to: 'links#show', as: 'links_show' # clicking a link takes it to destination
 delete 'link/:id', to: 'links#delete' # delete a link that I own
 
 #Comments
