@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
 	def create
+		#test comment
 	end
 
 	def show
