@@ -1,16 +1,31 @@
 class LinksController < ApplicationController
-	def create
+	def index
+		@links = Link.order(posted_at: :desc).page(params[:page])
+		render :index
 	end
 
-	def show
+	def create
+		@link = Link.create(title: params[:title])
+
+		render :create
 	end
 
 	def new
+
+		render :new
+
 	end
+
+	def show
+		@links= Link.find_by(id: params[:id])
+	end
+
 
 	def delete
+		@link = Link.find_by(id: params[:id])
+		@link.destroy!
+
+		rederect_to :root
 	end
 
-	def index
-	end
 end
