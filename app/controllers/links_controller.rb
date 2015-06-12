@@ -6,8 +6,18 @@ class LinksController < ApplicationController
 
 	def create
 		time = Time.now
-		@link = Link.create(user_id: nil, destination: params[:url],title: params[:title], posted_at: time)
-		render :create
+		if session[:user_id]
+
+			url = params[:url]
+
+			unless url =~ /^http:\/\//
+				url = "http://" + url
+			end
+
+			@link = Link.create(user_id: session[:user_id], destination: url,title: params[:title], posted_at: time)
+		end
+
+		redirect_to links_index_path
 	end
 
 	def new

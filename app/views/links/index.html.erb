@@ -1,0 +1,8 @@
+<h1> List of Links </h1>
+
+
+<ul>
+<% @links.each do |link| %>
+	<li><%= link_to link.title, link.destination %></li>
+	<% end %>
+</ul>

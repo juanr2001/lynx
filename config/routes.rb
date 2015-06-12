@@ -14,6 +14,7 @@ delete 'login', to: 'sessions#destroy' # remove user id
 
 #Links
 get 'links/new', to: 'links#new' # show the form for a new link
+get 'links/index', to: 'links#index' #shows all links
 post 'links', to: 'links#create' # the form action for new link (if logged in)
 get 'links/:id', to: 'links#show', as: 'links_show' # clicking a link takes it to destination
 delete 'link/:id', to: 'links#delete' # delete a link that I own
