@@ -5,15 +5,13 @@ class LinksController < ApplicationController
 	end
 
 	def create
-		@link = Link.create(title: params[:title])
-
+		time = Time.now
+		@link = Link.create(user_id: nil, destination: params[:url],title: params[:title], posted_at: time)
 		render :create
 	end
 
 	def new
-
 		render :new
-
 	end
 
 	def show
@@ -24,8 +22,7 @@ class LinksController < ApplicationController
 	def delete
 		@link = Link.find_by(id: params[:id])
 		@link.destroy!
-
-		rederect_to :root
+		redirect_to :root
 	end
 
 end

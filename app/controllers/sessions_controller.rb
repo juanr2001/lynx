@@ -9,20 +9,21 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: params[:email])
         passhash = Digest::SHA1.hexdigest(params[:password])
 
-        if @user && @user.password == passhash
-            session[:user_id] = @user.id
-        else
-            @error = "No user found!"
-        end
-
-        redirect_to :root
+    if @user && @user.password == passhash
+      session[:user_id] = @user.id
+      redirect_to :root
+    else
+      flash[:notice] = "Sorry, no such user found!"
+      redirect_to login_path
     end
 
-    def destroy
-        session.delete(:user_id)
-        @user = nil
+  end
 
-        redirect_to :root
-    end
+	def destroy
+    session.delete(:user_id)
+    flash[:notice] = "Successfully logged out."
+    @user = nil
+    redirect_to :root
+	end
 
 end

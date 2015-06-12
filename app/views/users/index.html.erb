@@ -1,5 +1,9 @@
 <h2> List of Users </h2>
 
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<%end%>
+
 <% if session[:user_id] %>
 	<h3>Welcome <%= @user.email %>!</h3>
 	<h3><%= link_to "Logout", login_path, method: :delete %></h3>
