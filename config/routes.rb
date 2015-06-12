@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-root to: 'links#index'
+root to: 'users#index'
 
 #User
 get 'users/new', to: 'users#new'  # show me the new user signup form
@@ -10,7 +10,7 @@ post 'users', to: 'users#create' # the form action for signup
 #Session
 get 'login', to: 'sessions#login' # show the login page
 post 'login', to: 'sessions#create' #set the user id in the session if password checks out
-delete 'login', to: 'session#delete' # remove user id
+delete 'login', to: 'sessions#destroy' # remove user id
 
 #Links
 get 'links/new', to: 'links#create' # show the form for a new link

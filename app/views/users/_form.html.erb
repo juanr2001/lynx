@@ -1,0 +1,14 @@
+<%= form_tag(@action, method: :post, class: 'post-form') do %>
+
+<div>
+	<%= label_tag(:email, "Email: ") %>
+	<%= text_field_tag(:email, nil, size:40) %>
+</div>
+
+<div>
+	<%= label_tag(:password, "Password: ") %>
+	<%= password_field_tag(:password, nil, size:40) %>
+</div>
+
+<%= submit_tag("Register!") %>
+<% end %>
