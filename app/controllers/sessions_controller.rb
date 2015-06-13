@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
     def login
         @action = login_path
+        @message = "Log In"
         render :login
     end
 

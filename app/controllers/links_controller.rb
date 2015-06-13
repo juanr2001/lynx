@@ -21,18 +21,24 @@ class LinksController < ApplicationController
 	end
 
 	def new
-		render :new
+		if session[:user_id]
+			render :new
+		else
+			flash[:notice] = "Must be logged in to post a new link."
+			redirect_to login_path
+		end
 	end
 
 	def show
-		@links= Link.find_by(id: params[:id])
+		@link= Link.find_by(id: params[:id])
+		redirect_to @link.destination
 	end
 
 
 	def delete
 		@link = Link.find_by(id: params[:id])
 		@link.destroy!
-		redirect_to :root
+		redirect_to links_index_path
 	end
 
 end

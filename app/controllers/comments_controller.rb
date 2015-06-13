@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
     end
 
     def show
-
+    	@link = Link.find(params[:id])
+    	render :show
     end
 
 end

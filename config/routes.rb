@@ -17,10 +17,10 @@ get 'links/new', to: 'links#new' # show the form for a new link
 get 'links/index', to: 'links#index' #shows all links
 post 'links', to: 'links#create' # the form action for new link (if logged in)
 get 'links/:id', to: 'links#show', as: 'links_show' # clicking a link takes it to destination
-delete 'link/:id', to: 'links#delete' # delete a link that I own
+delete 'links/:id', to: 'links#delete' # delete a link that I own
 
 #Comments
-get 'links/:id/comments', to: 'comments#show' # gets the page for a link and its comments
+get 'links/:id/comments', to: 'comments#show', as: 'link_comments' # gets the page for a link and its comments
 post 'link/:id/comments', to: 'comments#new' # form action for new comment, creates a comment if logged in
 
 end

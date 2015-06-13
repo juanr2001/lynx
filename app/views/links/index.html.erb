@@ -1,8 +1,18 @@
-<h1> List of Links </h1>
+<h1> Lynx </h1>
 
+<h2><%= link_to "New Link", links_new_path %></h2>
 
-<ul>
 <% @links.each do |link| %>
-	<li><%= link_to link.title, link.destination %></li>
+	<div>
+	<h3><%= link_to link.title, links_show_path(link.id)  %></h3>
+	<% if session[:user_id] == link.user_id %>
+	<%= link_to "Delete", links_show_path(link.id), method: :delete %>
 	<% end %>
-</ul>
+	<div>
+		<%= link_to "Comments", link_comments_path(link.id) %>
+	</div>
+	</div>
+<% end %>
+
+
+
