@@ -1,3 +1,31 @@
 <h3><%= link_to @link.title, @link.destination %></h3>
 
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<%end %>
+
 <%= form_tag(link_comments_path, method: :post) do %>
+	<div>
+	<%= label_tag(:content, "Comment: ") %>
+	</div>
+	<div>
+	<%= text_area_tag(:content, nil, rows:5, cols:40) %>
+	</div>
+	<div>
+	<%= submit_tag "Add Comment" %>
+	</div>	
+<% end %>
+
+<% comments = @link.comments.all %>
+<% comments.each do |comment| %>
+<div class = "comment">
+	<div class = "comment-content">
+	<%= comment.content %>
+	</div>
+	<div class = "commenter">
+	Posted by: <%= comment.user.email %>
+	</div
+</div>
+<% end %>
+
+<%= link_to "Homepage", root_path %>

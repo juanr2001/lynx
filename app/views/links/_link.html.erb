@@ -1,0 +1,19 @@
+
+<div class = "link">
+	<%= link.total_votes %> - <%= link_to link.title, links_show_path(link.id) %>
+	<div class = "submit">
+	submitted by <%= link.user.email %> <%= time_ago_in_words(link.posted_at) %> ago
+	</div>
+	<% if session[:user_id] == link.user_id %>
+	<%= link_to "Delete", links_show_path(link.id), method: :delete %>
+	<% end %>
+	<div class = "comments">
+		<%= link_to "Comments", link_comments_path(link.id) %>
+	</div>
+	<div class = "vote_up">
+		<%= link_to "Up", vote_up_path(link.id), method: :patch %>
+	</div>
+	<div class = "vote_down">
+		<%= link_to "Down", vote_down_path(link.id), method: :patch %>
+	</div>
+</div>

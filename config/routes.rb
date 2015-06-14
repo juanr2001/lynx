@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-root to: 'users#index'
+root to: 'links#index'
 
 #User
 get 'users/new', to: 'users#new'  # show me the new user signup form
@@ -21,6 +21,10 @@ delete 'links/:id', to: 'links#delete' # delete a link that I own
 
 #Comments
 get 'links/:id/comments', to: 'comments#show', as: 'link_comments' # gets the page for a link and its comments
-post 'link/:id/comments', to: 'comments#new' # form action for new comment, creates a comment if logged in
+post 'links/:id/comments', to: 'comments#new' # form action for new comment, creates a comment if logged in
+
+#votes
+patch 'links/:id/up', to: 'votes#up', as: 'vote_up'
+patch 'links/:id/down', to: 'votes#down', as: 'vote_down'
 
 end

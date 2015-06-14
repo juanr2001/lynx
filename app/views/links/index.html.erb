@@ -1,17 +1,13 @@
 <h1> Lynx </h1>
 
+<%= render partial="menu" %>
+
 <h2><%= link_to "New Link", links_new_path %></h2>
 
+
 <% @links.each do |link| %>
-	<div>
-	<h3><%= link_to link.title, links_show_path(link.id)  %></h3>
-	<% if session[:user_id] == link.user_id %>
-	<%= link_to "Delete", links_show_path(link.id), method: :delete %>
-	<% end %>
-	<div>
-		<%= link_to "Comments", link_comments_path(link.id) %>
-	</div>
-	</div>
+	<%= render partial: "link", locals: { link: link } %>
+</div>
 <% end %>
 
 

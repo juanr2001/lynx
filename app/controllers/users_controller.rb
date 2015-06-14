@@ -13,9 +13,4 @@ class UsersController < ApplicationController
 		redirect_to :root
 	end
 
-	def index
-		@user = User.find(session[:user_id]) if session[:user_id]
-		@users = User.all
-	end
-
 end
