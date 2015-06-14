@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+body a {
+	text-decoration: none;
+}
+
+.link 
+
+{
+	margin: 10px;
+	padding: 10px;
+}

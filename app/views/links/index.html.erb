@@ -1,8 +1,14 @@
-<h1> List of Links </h1>
+<h1> Lynx </h1>
+
+<%= render partial="menu" %>
+
+<h2><%= link_to "New Link", links_new_path %></h2>
 
 
-<ul>
 <% @links.each do |link| %>
-	<li><%= link_to link.title, link.destination %></li>
-	<% end %>
-</ul>
+	<%= render partial: "link", locals: { link: link } %>
+</div>
+<% end %>
+
+
+
